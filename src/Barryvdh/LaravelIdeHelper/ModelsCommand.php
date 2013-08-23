@@ -372,6 +372,8 @@ class ModelsCommand extends Command {
             $tag = Tag::createInstance("@method {$method['type']} {$name}({$arguments}) ", $phpdoc);
             $phpdoc->appendTag($tag);
         }
+        
+        $phpdoc->appendTag(Tag::createInstance("@method static $classname find(\$id, \$columns = array('*')) "));
 
         $serializer = new DocBlockSerializer();
         $serializer->getDocComment($phpdoc);
